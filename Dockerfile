@@ -8,11 +8,11 @@ RUN go build -o main main.go
 FROM alpine:3.18
 WORKDIR /app
 COPY --from=builder /app/main .
-COPY --from=builder /app/migrate ./migrate
+COPY --from=builder /app/db/migrate ./migrate
 COPY app.env .
 COPY start.sh .
 COPY wait-for.sh .
-COPY db/migration ./migration
+COPY db/migration ./db/migration
 RUN chmod +x ./start.sh
 RUN chmod +x ./wait-for.sh
 
