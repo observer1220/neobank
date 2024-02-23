@@ -2,13 +2,10 @@
 
 set -e
 
-echo "Run db migration"
+echo "run db migration"
+source /app/app.env
 echo "DB_SOURCE: $DB_SOURCE"
-
-# FTL cannot create new migrate instance error="pq: the database system is starting up"
-# /app/migrate -path /app/migration -database "$DB_SOURCE" -verbose up
-
-# FTL cannot create new migrate instance error="pq: password authentication failed for user \"root\""
+/app/migrate -path /app/migration -database "$DB_SOURCE" -verbose up
 
 echo "start the app"
 exec "$@"
