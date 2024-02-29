@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# set -e
-set -x
+set -e
+# set -x
 
 echo "run db migration"
 source /app/app.env
