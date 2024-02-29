@@ -5,6 +5,9 @@ set -e
 echo "run db migration"
 source /app/app.env
 echo "DB_SOURCE: $DB_SOURCE"
+
+echo migrate --version
+echo /app/migrate -version
 /app/migrate -path /app/migration -database "$DB_SOURCE" -verbose up
 
 echo "start the app"
