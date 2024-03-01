@@ -56,6 +56,7 @@ func main() {
 		log.Fatal().Err(err).Msg("cannot connect to db")
 	}
 
+	log.Info().Msgf("config: %s", config)
 	runDBMigration(config.MigrationURL, config.DBSource)
 
 	store := db.NewStore(connPool)
