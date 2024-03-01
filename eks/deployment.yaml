@@ -17,6 +17,6 @@ spec:
       containers:
       - name: neo-bank-api
         image: 118565160183.dkr.ecr.ap-southeast-1.amazonaws.com/neobank:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
-          
