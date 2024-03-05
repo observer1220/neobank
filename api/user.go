@@ -107,6 +107,7 @@ func (server *Server) loginUser(ctx *gin.Context) {
 		return
 	}
 
+	// AccessToken 是用來驗證使用者身份的，所以不需要存放在資料庫中，只需要在伺服器端產生即可
 	accessToken, accessPayload, err := server.tokenMaker.CreateToken(
 		user.Username,
 		user.Role,
@@ -117,6 +118,7 @@ func (server *Server) loginUser(ctx *gin.Context) {
 		return
 	}
 
+	// RefreshToken 是用來更新 AccessToken 的，所以需要存放在資料庫中，並且需要檢查是否過期
 	refreshToken, refreshPayload, err := server.tokenMaker.CreateToken(
 		user.Username,
 		user.Role,
@@ -127,6 +129,7 @@ func (server *Server) loginUser(ctx *gin.Context) {
 		return
 	}
 
+	// 將 RefreshToken 存放在資料庫中
 	session, err := server.store.CreateSession(ctx, db.CreateSessionParams{
 		ID:           refreshPayload.ID,
 		Username:     user.Username,
