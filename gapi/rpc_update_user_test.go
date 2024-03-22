@@ -37,8 +37,8 @@ func TestUpdateUserAPI(t *testing.T) {
 			name: "OK",
 			req: &pb.UpdateUserRequest{
 				Username: user.Username,
-				FullName: &newName,
-				Email:    &newEmail,
+				FullName: newName,
+				Email:    newEmail,
 			},
 			buildStubs: func(store *mockdb.MockStore) {
 				arg := db.UpdateUserParams{
@@ -82,8 +82,8 @@ func TestUpdateUserAPI(t *testing.T) {
 			name: "BankerCanUpdateUserInfo",
 			req: &pb.UpdateUserRequest{
 				Username: user.Username,
-				FullName: &newName,
-				Email:    &newEmail,
+				FullName: newName,
+				Email:    newEmail,
 			},
 			buildStubs: func(store *mockdb.MockStore) {
 				arg := db.UpdateUserParams{
@@ -127,8 +127,8 @@ func TestUpdateUserAPI(t *testing.T) {
 			name: "OtherDepositorCannotUpdateThisUserInfo",
 			req: &pb.UpdateUserRequest{
 				Username: user.Username,
-				FullName: &newName,
-				Email:    &newEmail,
+				FullName: newName,
+				Email:    newEmail,
 			},
 			buildStubs: func(store *mockdb.MockStore) {
 				store.EXPECT().
@@ -149,8 +149,8 @@ func TestUpdateUserAPI(t *testing.T) {
 			name: "UserNotFound",
 			req: &pb.UpdateUserRequest{
 				Username: user.Username,
-				FullName: &newName,
-				Email:    &newEmail,
+				FullName: newName,
+				Email:    newEmail,
 			},
 			buildStubs: func(store *mockdb.MockStore) {
 				store.EXPECT().
@@ -172,8 +172,8 @@ func TestUpdateUserAPI(t *testing.T) {
 			name: "InvalidEmail",
 			req: &pb.UpdateUserRequest{
 				Username: user.Username,
-				FullName: &newName,
-				Email:    &invalidEmail,
+				FullName: newName,
+				Email:    invalidEmail,
 			},
 			buildStubs: func(store *mockdb.MockStore) {
 				store.EXPECT().
@@ -194,8 +194,8 @@ func TestUpdateUserAPI(t *testing.T) {
 			name: "ExpiredToken",
 			req: &pb.UpdateUserRequest{
 				Username: user.Username,
-				FullName: &newName,
-				Email:    &newEmail,
+				FullName: newName,
+				Email:    newEmail,
 			},
 			buildStubs: func(store *mockdb.MockStore) {
 				store.EXPECT().
@@ -216,8 +216,8 @@ func TestUpdateUserAPI(t *testing.T) {
 			name: "NoAuthorization",
 			req: &pb.UpdateUserRequest{
 				Username: user.Username,
-				FullName: &newName,
-				Email:    &newEmail,
+				FullName: newName,
+				Email:    newEmail,
 			},
 			buildStubs: func(store *mockdb.MockStore) {
 				store.EXPECT().
