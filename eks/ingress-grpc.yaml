@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: simple-bank-ingress-grpc
+  name: neo-bank-ingress-grpc
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
@@ -9,17 +9,17 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: "gapi.simplebanktest.com"
+  - host: "gapi.neobank24.net"
     http:
       paths:
       - pathType: Prefix
         path: "/"
         backend:
           service:
-            name: simple-bank-api-service
+            name: neo-bank-api-service
             port:
               number: 90
   tls:
   - hosts:
-    - gapi.simplebanktest.com
-    secretName: simple-bank-gapi-cert
+    - gapi.neobank24.net
+    secretName: neo-bank-gapi-cert

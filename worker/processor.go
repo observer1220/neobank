@@ -53,6 +53,7 @@ func NewRedisTaskProcessor(redisOpt asynq.RedisClientOpt, store db.Store, mailer
 	}
 }
 
+// 註冊處理程序，處理發送驗證郵件任務
 func (processor *RedisTaskProcessor) Start() error {
 	mux := asynq.NewServeMux()
 
