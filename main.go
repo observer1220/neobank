@@ -79,7 +79,6 @@ func main() {
 }
 
 func runDBMigration(migrationURL string, dbSource string) {
-	// 20240301 print migrationURL, dbSource
 	log.Info().Msgf("migrationURL: %s", migrationURL)
 	log.Info().Msgf("dbSource: %s", dbSource)
 
